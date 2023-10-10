@@ -1,7 +1,6 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <template>
     <div class="background-image">
-      <p>Componente de Fondo</p>
         <img src="@/assets/body_bg.png" alt="Fondo de pantalla" />
     </div>
   </template>
