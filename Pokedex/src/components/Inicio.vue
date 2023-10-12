@@ -1,13 +1,11 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <template>
-  <div class="container-fluid autos" style="min-height: 100vh;"> <!-- header que sea como componente --> 
+  <div class="container-fluid autos" style="min-height: 100vh; margin-top: 16px;">
         <img src="../assets/LogoPokemon.png" alt="Pokemon logo">        
     <h2>Página principal</h2>
     <p>¡Bienvenido a la Pokédex!</p>
     <h4>Presione una de las pestañas para más información</h4>    
   </div>
-  <!-- view router
-  footer como componente -->
 </template>
 
 
@@ -21,4 +19,10 @@ img{
         margin-top: 0px;
         margin-bottom: 0px;
     }
+
+h2,h4,p{
+  color: white;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
 </style>

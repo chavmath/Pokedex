@@ -7,13 +7,13 @@
             <form @submit.prevent="login">
                 <div class="form-group">
                     <label for="username">Nombre de usuario:</label>
-                    <input type="text" id="username" v-model="username" class="form-control" placeholder="Ingrese su nombre de usuario" required>
+                    <input type="text" id="username" v-model="username" class="form-control" placeholder="Ingrese su usuario" required>
                 </div>
                 <div class="form-group">
                     <label for="password">Contraseña:</label>
                     <input type="password" id="password" v-model="password" class="form-control" placeholder="Ingrese su contraseña" required>
                 </div>
-                <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
+                <button type="submit" class="btn btn-primary" @click="authenticate">Iniciar Sesión</button>
             </form>
         </div>
     </div>
@@ -28,15 +28,20 @@
       };
     },
     methods: {
-      login() {
-        if (this.username === "usuario" && this.password === "contraseña") {
-          this.$router.push("/"); 
+    authenticate() {
+      this.$store.dispatch('login', {
+        username: this.username,
+        password: this.password,
+      }).then((authenticated) => {
+        if (authenticated) {
+          this.$router.push('/');
         } else {
-          alert("Credenciales incorrectas. Inténtalo de nuevo.");
+          alert('Credenciales incorrectas. Inténtalo de nuevo.');
         }
-      },
+      });
     },
-  };
+  },
+};
   </script>
   
   <style scoped>
@@ -44,12 +49,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 70vh;
+    height: 82vh;
+    min-height: 100%;
   }
   
   .login-form {
     max-width: 400px;
-    padding: 40px;
+    max-height: 600px;
+    padding: 60px;
     border: 1px solid #ccc;
     background-color: #fff;
     border-radius: 10px;
@@ -58,14 +65,14 @@
   }
   
   .logo {
-    width: 200px;
+    width: 250px;
     height: 100px;
-    margin-bottom: 20px;
-    margin-top: 0px;
+    margin-bottom: 30px;
   }
   
   h2 {
-    margin: 0 0 20px;
+    margin-top: 0px;
+    margin-bottom: 40px;
     font-size: 24px;
     color: #3341a7;
     text-align: center;
@@ -86,7 +93,7 @@
   }
   
   .form-control {
-    width: 90%;
+    width: 100%;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 10px;
@@ -100,7 +107,7 @@
     border: none;
     border-radius: 10px;
     cursor: pointer;
-    margin-top: 10px;
+    margin-top: 20px;
   }
   
   .btn-primary:hover {

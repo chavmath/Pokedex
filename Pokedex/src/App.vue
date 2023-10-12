@@ -1,11 +1,13 @@
 <template>
   <div id="app-vue">
     <header>
-      <!-- div class bg-primary -->
-      <router-link to="/login">Iniciar Sesión</router-link> <!-- Enlace a la página de inicio de sesión -->
       <router-link to="/">Inicio</router-link>
       <router-link to="/pokemon-names">Nombres de Pokémon</router-link>
-      <router-link to="/pokemon-ids">IDs de Pokémon</router-link>        
+      <router-link to="/pokemon-ids">IDs de Pokémon</router-link>
+      <!-- Mostrar el botón de cierre de sesión si el usuario ha iniciado sesión -->
+      <button v-if="loggedIn" @click="logout" class="btn btn-danger">
+        <i class="fas fa-sign-out-alt"></i> Cerrar Sesión
+      </button>
     </header>
 
     <main>
@@ -13,11 +15,26 @@
     </main>
 
     <footer>
-      <!-- div class bg-warning -->
       <p>©Pokédex</p>
     </footer>
   </div>
 </template>
+
+<script>
+export default {
+  computed: {
+    loggedIn() {
+      return this.$store.getters.isLoggedIn;
+    },
+  },
+  methods: {
+    logout() {
+      this.$store.dispatch('logout');
+      this.$router.push('/login');
+    },
+  },
+};
+</script>
 
 <style>
 body {
@@ -25,6 +42,7 @@ body {
   min-height: 100vh;
   margin: 0;
   padding: 0;
+  text-align: center;
 }
 
 ul{
@@ -50,15 +68,17 @@ ul{
 
 header {
   background-color: #3341a7;
-  padding: 15px;
+  padding: 10px;
   display: flex;
   justify-content: space-around;
+  max-width: 100%;
 }
 
 header a {
   text-decoration: none;
   color: white;
   font-weight: bold;
+  font-size: large;
 }
 
 main {
@@ -68,13 +88,12 @@ main {
 footer {
   background-color: #e9bd2d;
   padding: 5px;
-  position: absolute;
+  position: relative;
   bottom: 0;
-  width: 100%;
+  max-width: 100%;
   text-align: center;
-  color: white;
+  color: white;  
 }
-table{
-  color:white;
-}
+
 </style>
+
