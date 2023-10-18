@@ -1,6 +1,6 @@
 <template>
   <div id="app-vue">
-    <header>
+    <header class="w-100">
       <router-link to="/">Inicio</router-link>
       <router-link to="/pokemon-names">Nombres de Pokémon</router-link>
       <router-link to="/pokemon-ids">IDs de Pokémon</router-link>
@@ -9,12 +9,14 @@
         <i class="fas fa-sign-out-alt"></i> Cerrar Sesión
       </button>
     </header>
-
-    <main>
+    
+    <div class="vista">
+    <main >
       <router-view></router-view>
     </main>
+    </div>
 
-    <footer>
+    <footer class="w-100">
       <p>©Pokédex</p>
     </footer>
   </div>
@@ -53,7 +55,10 @@ ul{
   text-align: center;
   color: #333;
   margin:0px;
-  padding:0px;  
+  padding:0px;
+  height: 100vh;
+  width: 100vw; 
+  position: relative;
 }
 
 .bg{
@@ -62,8 +67,6 @@ ul{
     background-position: center;
     margin: 0;
     padding: 0;
-    height: 100vh;
-    width: 100vw;
 }
 
 header {
@@ -72,6 +75,11 @@ header {
   display: flex;
   justify-content: space-around;
   max-width: 100%;
+  /* position: absolute; */
+  /* top: 0px; */
+  z-index: 200;
+  /* left: 0%; */
+
 }
 
 header a {
@@ -88,12 +96,21 @@ main {
 footer {
   background-color: #e9bd2d;
   padding: 5px;
-  position: relative;
-  bottom: 0;
+  /* position: relative; */
   max-width: 100%;
   text-align: center;
   color: white;  
+  /* position: absolute; */
+ /*  bottom: 0px; */
+  z-index: 200;
+  /* left: 0%; */
 }
+
+/* .vista{
+   height: 500px;
+   overflow: hidden;
+   border: 1px solid #ccc;
+} */
 
 </style>
 

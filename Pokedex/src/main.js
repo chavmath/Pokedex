@@ -7,13 +7,14 @@ import PokemonIds from '../src/components/PokemonIds.vue';
 import Login from '../src/components/Login.vue';
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap/dist/js/bootstrap.js'
-import store from './store'; // Importa el store
+import store from './store'; 
 
 const routes = [
   { path: '/', component: Inicio },
   { path: '/pokemon-names', component: PokemonList },
   { path: '/pokemon-ids', component: PokemonIds },
   { path: '/login', component: Login },
+  { path: '/about', component: () => import('../src/views/AboutView.vue')},
 ];
 
 const router = createRouter({

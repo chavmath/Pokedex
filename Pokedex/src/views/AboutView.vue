@@ -1,15 +1,22 @@
 <template>
-  <div class="about">
-    <h1>This is an about page</h1>
+  <div class="container-fluid">
+    <div class="w*100 fixed-top bg-danger">header</div>
+    <div class="w-100 bg-info h-50">componente</div>
+    <div class="w-100 fixed-bottom bg-success">footer</div>
   </div>
 </template>
 
-<style>
-@media (min-width: 1024px) {
-  .about {
-    min-height: 80vh;
-    display: flex;
-    align-items: center;
+<script>
+export default {
+  computed: {
+    loggedIn() {
+      // Accede al estado de inicio de sesión desde tu aplicación centralizada.
+      return this.loggedIn;
+    }
   }
 }
+</script>
+
+<style>
+
 </style>
